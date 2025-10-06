@@ -12,6 +12,7 @@
   justify-content: center;
 }
 
+
 .calc-title {
   font-size: 2.2rem;
   margin-bottom: 24px;
@@ -19,42 +20,19 @@
   text-shadow: 0 2px 8px #cce7ff;
 }
 
+
 .calc-container {
   background: #fff;
-  border-radius: 32px;
-  box-shadow: 0 12px 48px rgba(200, 180, 255, 0.22);
-  padding: 56px 40px 40px 40px;
+  border-radius: 40px;
+  box-shadow: 0 16px 64px rgba(200, 180, 255, 0.28);
+  padding: 72px 56px 56px 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 480px;
-}
-
-.calc-display {
-  width: 100%;
-  margin-bottom: 20px;
-  border: 2px solid #6a11cb;
-  border-radius: 10px;
-  text-align: right;
-  background-color: #f3f6fd;
-  color: #222;
-  box-shadow: 0 2px 8px rgba(40, 40, 80, 0.08);
+  min-width: 600px;
 }
 
 
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  padding: 0 32px;
-}
-
-
-.button,
-button {
-  font-size: 2.2rem;
-  padding: 36px 0;
-/* Unified and enlarged display style */
 .calc-display {
   width: 100%;
   font-size: 3.5rem;
@@ -67,6 +45,22 @@ button {
   color: #2575fc;
   box-shadow: 0 8px 32px #f8e1f4;
 }
+
+
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding: 0 32px;
+}
+
+
+
+.button,
+button {
+  font-size: 2.2rem;
+  padding: 36px 0;
   border: none;
   border-radius: 16px;
   background: linear-gradient(135deg, #cce7ff 0%, #ffb6c1 100%);
@@ -77,33 +71,32 @@ button {
   font-weight: 500;
 }
 
+.button:focus,
+button:focus {
+  outline: 2px solid #2575fc;
+  outline-offset: 2px;
+}
+
+
 .button:active,
 button:active {
   transform: scale(0.97);
 }
 
+
 .button.btn-operator,
 button.btn-operator {
   background: linear-gradient(135deg, #ffb6c1 0%, #cce7ff 100%);
   color: #ff69b4;
-/* Unified and enlarged container style */
-.calc-container {
-  background: #fff;
-  border-radius: 40px;
-  box-shadow: 0 16px 64px rgba(200, 180, 255, 0.28);
-  padding: 72px 56px 56px 56px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 600px;
 }
-}
+
 
 .button.btn-clear,
 button.btn-clear {
   background: linear-gradient(135deg, #ffe4e1 0%, #cce7ff 100%);
   color: #ff69b4;
 }
+
 
 .button.btn-equals,
 button.btn-equals {
