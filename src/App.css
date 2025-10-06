@@ -22,9 +22,11 @@
 
 
 .calc-container {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
   border-radius: 40px;
   box-shadow: 0 16px 64px rgba(200, 180, 255, 0.28);
+  border: 1px solid rgba(200, 180, 255, 0.18);
   padding: 72px 56px 56px 56px;
   display: flex;
   flex-direction: column;
@@ -44,6 +46,7 @@
   background-color: #f8e1f4;
   color: #2575fc;
   box-shadow: 0 8px 32px #f8e1f4;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 
@@ -57,6 +60,7 @@
 
 
 
+/* Button styles fixed and enhanced */
 .button,
 button {
   font-size: 2.2rem;
@@ -71,10 +75,54 @@ button {
   font-weight: 500;
 }
 
+.button:hover,
+button:hover {
+  background: linear-gradient(135deg, #b7cbdc 0%, #ffb6c1 100%);
+  box-shadow: 0 6px 24px #cce7ff;
+  transform: scale(1.04);
+}
+
 .button:focus,
 button:focus {
-  outline: 2px solid #2575fc;
+  outline: 2px solid #ffb6c1;
   outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .calc-container {
+    min-width: 90vw;
+    padding: 32px 8px;
+  }
+  .calc-display {
+    font-size: 2rem;
+    padding: 18px;
+  }
+  .buttons {
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .button, button {
+    font-size: 1.2rem;
+    padding: 18px 0;
+  }
+}
+@media (max-width: 600px) {
+  .calc-container {
+    min-width: 90vw;
+    padding: 32px 8px;
+  }
+  .calc-display {
+    font-size: 2rem;
+    padding: 18px;
+  }
+  .buttons {
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .button, button {
+    font-size: 1.2rem;
+    padding: 18px 0;
+  }
 }
 
 
