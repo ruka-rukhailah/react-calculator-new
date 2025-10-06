@@ -1,3 +1,11 @@
+test('toggles dark mode', () => {
+  render(<App />);
+  const toggleBtn = screen.getByLabelText(/toggle dark mode/i);
+  expect(document.body).not.toHaveClass('dark-mode');
+  fireEvent.click(toggleBtn);
+  // The dark mode class is added to the App div, not body
+  expect(screen.getByText(/React Calculator/i).parentElement).toHaveClass('dark-mode');
+});
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 

@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
+  const [history, setHistory] = useState([]);
 
   // Original calculator button layout
   const buttons = [
@@ -20,6 +22,11 @@ function App() {
     if (value === '×') val = '*';
     if (value === '÷') val = '/';
 
+    // Clear error state if user starts new calculation
+    if (input === 'Error' && val !== 'C') {
+      setInput('');
+    }
+
     if (val === '=') {
       // Prevent evaluation if input ends with operator or is empty
       if (!input || isOperator(input[input.length - 1])) {
@@ -29,6 +36,7 @@ function App() {
       try {
         const result = math.evaluate(input);
         setInput(result.toString());
+        setHistory(prev => [input + ' = ' + result, ...prev]);
       } catch {
         setInput('Error');
       }
@@ -45,10 +53,28 @@ function App() {
   };
 
   return (
-    <div className="App calculator-bg">
+    <div className={`App calculator-bg${darkMode ? ' dark-mode' : ''}`}>
+      <button
+        style={{ position: 'absolute', top: 24, right: 24, zIndex: 10 }}
+        onClick={() => setDarkMode((prev) => !prev)}
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? '🌙 Dark' : '☀️ Light'}
+      </button>
       <h1 className="calc-title">React Calculator</h1>
-      <div className="calc-container">
-        <input className="calc-display" value={input} readOnly />
+      <div className={`calc-container${darkMode ? ' dark-mode' : ''}`}>
+  <input className="calc-display" value={input} readOnly aria-label="Calculator display" />
+        {/* History Section */}
+        {history.length > 0 && (
+          <div className="calc-history" style={{ width: '100%', marginBottom: 24, textAlign: 'left', fontSize: '1.1rem', color: darkMode ? '#cce7ff' : '#2575fc', fontFamily: 'Inter, Segoe UI, Arial, sans-serif' }}>
+            <strong>History:</strong>
+            <ul style={{ paddingLeft: 20, margin: 0 }}>
+              {history.slice(0, 5).map((item, idx) => (
+                <li key={idx} style={{ marginBottom: 4 }}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="buttons">
           {buttons.map((btn, i) => (
             <button

@@ -1,3 +1,13 @@
+# React Calculator
+
+This is a modern React calculator app featuring:
+- Beautiful UI with light and dark mode
+- Basic arithmetic operations
+- Calculation history
+- Accessible design
+- Docker support for easy deployment
+
+## Getting Started
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
