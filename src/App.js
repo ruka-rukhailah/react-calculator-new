@@ -64,17 +64,21 @@ function App() {
       <h1 className="calc-title">React Calculator</h1>
       <div className={`calc-container${darkMode ? ' dark-mode' : ''}`}>
   <input className="calc-display" value={input} readOnly aria-label="Calculator display" />
-        {/* History Section */}
-        {history.length > 0 && (
-          <div className="calc-history" style={{ width: '100%', marginBottom: 24, textAlign: 'left', fontSize: '1.1rem', color: darkMode ? '#cce7ff' : '#2575fc', fontFamily: 'Inter, Segoe UI, Arial, sans-serif' }}>
-            <strong>History:</strong>
-            <ul style={{ paddingLeft: 20, margin: 0 }}>
-              {history.slice(0, 5).map((item, idx) => (
-                <li key={idx} style={{ marginBottom: 4 }}>{item}</li>
-              ))}
-            </ul>
+        {/* History Section - iPhone style */}
+        <div className="calc-history-container">
+          <div className="calc-history-label">History</div>
+          <div className="calc-history-list">
+            {history.length === 0 ? (
+              <div className="calc-history-empty">No history yet</div>
+            ) : (
+              <ul>
+                {history.slice(0, 10).map((item, idx) => (
+                  <li key={idx} className="calc-history-item">{item}</li>
+                ))}
+              </ul>
+            )}
           </div>
-        )}
+        </div>
         <div className="buttons">
           {buttons.map((btn, i) => (
             <button
